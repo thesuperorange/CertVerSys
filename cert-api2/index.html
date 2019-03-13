@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ipfs-upload test</title>
+</head>
+
+<body>
+    <h1>Upload File TO IPFS</h1>
+     <div class="formContainer">
+        <form class="formUpload" enctype="multipart/form-data" method="POST" action="http://localhost:3000/api/v1/datasrc/db/ipfsupload">
+            <input type="file" name="uploadpdf" multiple="multiple">
+            expire time : <input type="text" name="expire">
+            <input type="submit" value="submit">
+        </form>
+    </div>
+
+    <h1>get File From IPFS</h1>
+     <div class="formContainer">
+        <form class="formUpload" method="POST" action="http://localhost:3000/api/v1/datasrc/db/ipfshash">
+            <input type="text" name="hash">
+            <input type="submit" value="submit">
+        </form>
+    </div>
+</body>
+
+</html>

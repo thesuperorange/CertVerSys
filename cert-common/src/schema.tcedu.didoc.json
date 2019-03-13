@@ -1,0 +1,53 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "TcEduDIDoc",
+    "description" : "https://w3c-ccg.github.io/did-spec/",
+    "type": "object",
+    "definitions": {
+        "PublicKey": {
+          "type": "object",
+          "properties": {
+            "owner": { "type": "string" },
+            "id": { "type": "string" },
+            "type": { "type": "string" },
+            "publicKeyHex": { "type": "string" }
+          },
+          "additionalProperties": false,
+          "required": ["owner", "id", "type" , "publicKeyHex"]
+        },
+        "JsonLdContext": {
+          "description": "A link to a valid JSON-LD context file",
+          "oneOf": [
+            { "type": "string" },
+            { "type": "object" },
+            {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          ]
+        }
+      },
+    "properties": {
+        "@context": { "$ref": "#/definitions/JsonLdContext" },
+        "id": {
+            "type": "string"
+        },
+        "publicKey": {
+            "type": "array",
+            "items":{
+                "$ref": "#/definitions/PublicKey"
+            }
+        },
+        "authentication": {
+            "type": "array"
+        },
+        "service": {
+            "type": "array"
+        },
+        "proof": {
+            "type": "object"
+        }
+    },
+    "additionalProperties": false,
+    "required": ["@context", "id", "publicKey" , "authentication", "service", "proof"]
+}

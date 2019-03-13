@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1></h1>
+    <div>certDB Address:
+        <span id="showDB"> </span>
+    </div>
+    <div>cert2 Address:
+        <span id="show2"> </span>
+    </div>
+    <h1></h1>
+    <button onclick="run()">deploy</button>
+
+    <form class="formUpload" enctype="multipart/form-data" method="POST" action="http://localhost:3000/api/v1/datasrc/db/upload">
+        <div class="formContainer">
+            <h2>Upload</h2>
+            <input type="hidden" name="_csrf" value="{{ csrf }}">
+            <ul>
+                <li>
+                    <label>
+                        Name:
+                        <input type="text" name="title">
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        File:
+                        <input type="file" name="uploadfile" >
+                    </label>
+                </li>
+            </ul>
+            <input type="submit" value="submit">
+        </div>
+    </form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="http://malsup.github.io/jquery.blockUI.js"></script>
+    <script>
+        function run() {
+            $.blockUI({ message: 'deploying contract...' });
+            $("#showDB").html("---");
+            $("#show2").html("---");
+            console.log('test');
+            $.ajax({
+                async: true,
+                type: "POST",
+                url: "http://localhost:3000/api/v1/cert/contract-deploy",
+                headers: {
+                    "X-Custom-Header": "NCHC_BLOCKCHAIN_TEAM",
+
+                },
+                data: {
+                    idAccount: 0
+                },
+                success: function (result) {
+                    console.log(result);
+                    $("#showDB").html("<strong>" + result.address + "</strong>");
+                    $.ajax({
+                        async: true,
+                        type: "POST",
+                        url: "http://localhost:3000/api/v1/cert/issue/contract-deploy",
+                        headers: {
+                            "X-Custom-Header": "NCHC_BLOCKCHAIN_TEAM",
+
+                        },
+                        data: {
+                            idAccount: 0
+                        },
+                        success: function (result) {
+                            console.log(result);
+                            $("#show2").html("<strong>" + result.address + "</strong>");
+                            $.unblockUI();
+                        }
+                    });
+                }
+            });
+
+        }
+    </script>
+</body>
+
+</html>

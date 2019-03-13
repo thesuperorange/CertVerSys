@@ -1,0 +1,990 @@
+openapi: "3.0.0"
+info:
+  version: 0.0.1
+  title: Taichung School Certificate Project
+  license:
+    name: MIT
+servers:
+  - url: http://localhost:3000/api/v1
+  - url: http://localhost:3000/api/test
+  - url: http://192.168.56.101:3000/api/v1
+security:
+  - bearerAuth: []
+paths:
+  /certtest/sign/signsig:
+    post:
+      summary: signsig
+      tags:
+        - sign      
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                certID:
+                  type: string
+                sJWS:
+                  type: string
+                signeradd:
+                  type: string
+                owneraddr:
+                  type: string
+              example:                
+                certID: "01458056"  
+                sJWS: "i am sjws"                
+                signeradd: "0x0000000000000000000000000000000000000001"
+                owneraddr: "9417158"
+      responses:
+        '200':
+          content:
+            application/json:    
+  /cert/sign/verify_test:
+    post:
+      summary: verify_test
+      tags:
+        - verify_test      
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                certID:
+                  type: string
+                sJWS:
+                  type: string
+                signeradd:
+                  type: string
+                owneraddr:
+                  type: string
+              example:                
+                certID: "01458056"  
+                sJWS: "i am sjws"                
+                signeradd: "0x0000000000000000000000000000000000000001"
+                owneraddr: "9417158"
+      responses:
+        '200':
+          content:
+            application/json:    
+  /certtest/sign/checkdownloadpermission:
+    post:
+      summary: checkdownloadpermission
+      tags:
+        - sign      
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                owneraddr:
+                  type: string
+                certID:
+                  type: string
+                pub:
+                  type: string
+                signeraddr:
+                  type: string
+              example:                
+                owneraddr: "0x0000000000000000000000000000000000000003"  
+                certID: "15476763"                
+                signeraddr: "0x0000000000000000000000000000000000000000"
+                pub: "023178d60674b6adad6e3e13ade42f8ef9364017f1fb5a4d49ee13f58d49ce422c"
+      responses:
+        '200':
+          content:
+            application/json:     
+  /certtest/insertaddress/{userID}:
+    get:
+      summary: "add address for student"
+      tags:
+        - initial
+      parameters:
+        - in: path
+          name: userID  
+          schema:
+            type: number
+          required: true
+          description: userid
+      responses:
+        '200':
+          content:
+            application/json:
+  /certtest/createaddress:
+    post:
+      summary: createaddress
+      tags:
+        - sign      
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                pub:
+                  type: string
+              example:                
+                pub: "01458056"             
+      responses:
+        '200':
+          content:
+            application/json:   
+  /certtest/sign/verify-QRcode:
+    post:
+      summary: verify-QRcode
+      tags:
+        - sign      
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                qrcodestring:
+                  type: string
+              example:                
+                qrcodestring: "0x0000000000000000000000000000000000000003eyJ0eXBlIj20867090d14a6fce15f1567668efb771ba8d1559"             
+      responses:
+        '200':
+          content:
+            application/json: 
+  /certtest/userinfo/{id}:
+    get:
+      summary: "取得指定userinfo"
+      tags:
+        - initial
+      parameters:
+        - in: path
+          name: id  
+          schema:
+            type: number
+          required: true
+          description: userid
+      responses:
+        '200':
+          content:
+            application/json:
+  /certtest:
+    get:
+      summary: "取得Userinfo"
+      tags:
+        - initial
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+    post:
+      summary: "新增Userinfo"
+      tags:
+        - initial
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                orgID:
+                  type: number
+                classID:
+                  type: number
+                role:
+                  type: number
+                address:
+                  type: string
+              example:
+                orgID: '123'
+                classID: '456'
+                role: '1'
+                address: 
+                  
+      responses:
+        '200':
+          content:
+            application/json:
+  /ethereum/block/getlatestblock:
+    get:
+      summary: get latest block number
+      tags:
+        - block
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+  /certtest/create-did:
+    post:
+      summary: create
+      tags:
+        - sign
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+  /certtest/sign/getjws:
+    post:
+      summary: getjws
+      tags:
+        - sign      
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                mnemonic:
+                  type: string
+                jws:
+                  type: string
+              example:                
+                mnemonic: "01458056"  
+                jws: "i am sjws"                
+                
+      responses:
+        '200':
+          content:
+            application/json:     
+  /ethereum/block/{id}:
+    get:
+      summary: get block info
+      tags:
+        - block
+      parameters: 
+        - in: path
+          name: id  
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the block to get
+      responses:
+        '200':
+          description: block found!
+        '404':
+          description: block not found!
+          content:
+            application/json: 
+  /certtest/sign/verifysjws:
+    post:
+      summary: verifysjws
+      tags:
+        - sign      
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                publickey:
+                  type: string
+                jws:
+                  type: string
+              example:                
+                publickey: "01458056"  
+                sjws: "i am sjws"                
+                
+      responses:
+        '200':
+          content:
+            application/json:     
+  /certtest/insert-org:
+    post:
+      summary: insert org information into database
+      tags:
+        - initial      
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                orgID:
+                  type: number
+                orgName:
+                  type: string
+                contract:
+                  type: string
+              example:                
+                orgID: 55688
+                orgName: "NCTU"                
+                contract: null
+      responses:
+        '200':
+          content:
+            application/json:     
+
+  /certtest/create-contract/{orgID}:
+    get:
+      summary: create new contract for org
+      tags:
+        - initial
+      parameters: 
+        - in: path
+          name: orgID
+          schema:
+            type: integer
+          required: true
+          description: orgID
+      responses:
+        '200':
+          content:
+            application/json:            
+
+  /certtest/sign/get-signlist/{signAddr}:
+    get:
+      summary: get sign list
+      tags:
+        - sign
+      parameters: 
+        - in: path
+          name: signAddr
+          schema:
+            type: string
+          required: true
+          description: signAddr
+      responses:
+        '200':
+          content:
+            application/json:        
+
+            
+  /certtest/sign/sig-gen:
+    post:
+      summary: generate signature
+      tags:
+        - sign      
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                certList:
+                  type: string[]
+                walletPath:
+                  type: string
+              example:                
+                orgID: ["001","002","003"]
+                orgName: "/tmp/abcd"                                
+      responses:
+        '200':
+          content:
+            application/json: 
+  /certtest/sign/verify-wallet:       
+    post:     
+      summary: verify wallet password
+      tags:
+        - sign
+      parameters: []        
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                password:
+                  type: string
+                walletPath:
+                  type: string
+              example:
+                password: "1234"   
+                walletPath: "/home/bob/downloads/1.wlt"
+      responses:
+        '200':
+          content:
+            application/json:  
+
+  /certtest/sign/rsv-gen:       
+    post:     
+      summary: generate rsv by signature
+      tags:
+        - sign
+      parameters: []        
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                signature:
+                  type: string
+              example:
+                signature: "0xe5d2f38e68412"                   
+      responses:
+        '200':
+          content:
+            application/json:  
+            
+
+  /certtest/sign:       
+    post:     
+      summary: sign main
+      tags:
+        - sign
+      parameters: []        
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:                
+                certlist:
+                  type: number[]
+                signer:
+                  type: string
+                rsv:
+                  type: object
+                  properties:
+                    r:
+                      type: string
+                    s:
+                      type: string
+                    v:
+                      type: string
+              example:
+                signer: "55688"
+                certlist: [1234,2234,3234]
+                rsv:                                        
+                  - r: "0x12345678"
+                    s: "0x23456789"
+                    v: 21                                          
+                  - r: "0x12345678"
+                    s: "0x23456789"
+                    v: 17                   
+                   
+                    
+      responses:
+        '200':
+          content:
+            application/json:  
+
+
+  /certtest/issue/get-class-list:       
+    post:     
+      summary: get class list by schoolID
+      tags:
+        - issue
+      parameters: []        
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                userID:
+                  type: number
+                orgID:
+                  type: number
+                classID:
+                  type: number
+                role:
+                  type: number
+                address:
+                  type: string    
+              example:
+                userID: -1
+                orgID: 55688
+                classID: 10
+                role: -1
+                address: null 
+      responses:
+        '200':
+          content:
+            application/json:      
+
+  /certtest/issue/get-student-list:         
+    post:        
+      summary: get student list by schoolID and class
+      tags:
+        - issue
+      parameters:
+        - in: query
+          name: schoolID
+          schema:
+            type: string
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                schoolID: "NCTU"
+      responses:
+        '200':
+          content:
+            application/json:       
+  /certtest/issue:       
+    post:     
+      summary: issue main
+      tags:
+        - issue
+      parameters: []        
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                owner:
+                  type: string[]
+                issuer:
+                  type: string
+                signer:
+                  type: string[]
+                contract:
+                  type: string
+                version:
+                  type: string    
+                certName:
+                  type: string 
+                revocation:
+                  type: string 
+                description:
+                  type: string 
+                timestamp:
+                  type: string 
+                certFile:
+                  type: string[]
+              example:
+                owner: ["9417158","9417159","9417160"]
+                issuer: "issuer123"
+                signer: ["9857503","9857504","9857505"]
+                contract: "0686005"
+                version: "0.1.0"
+                certName: "TOEFL"
+                revocation: false
+                description: "this is toefl certification"
+                timestamp: "1234567890123"
+                certFilePath: ["/home/superorange/9417158.pdf",
+                    "/home/superorange/9417159.pdf",
+                    "/home/superorange/9417160.pdf"]
+      responses:
+        '200':
+          content:
+            application/json:      
+
+  /certtest/users:
+    get:
+      summary: get student list
+      tags:
+        - certtest
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+    post:
+      summary: get classID by schoolID
+      tags:
+        - certtest
+      parameters:
+        - in: query
+          name: schoolID
+          schema:
+            type: string
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string[]
+              example:
+                schoolID: "NCTU"
+      responses:
+        '200':
+          content:
+            application/json:
+  /dev/ethreg-contract:
+    get:
+      summary: "取得ORM測試合約列表"
+      tags:
+        - dev
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+    post:
+      summary: "新增ORM測試合約"
+      tags:
+        - dev
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                address:
+                  type: string
+                deployAccount:
+                  type: string
+              example:
+                address: '0xad44a8ea9a9bb5ef66f041bb921a687331729eb4'
+                deployAccount: '0x1b2ae7ea68e81998c031122ea7aa6ed0c6975ee7'
+      responses:
+        '200':
+          content:
+            application/json:
+  /dev/ethreg/set-claim:
+    post:
+      summary: Save keyHex(256 bits) and valueHex(256 bits) to claim smartcontract.
+      tags:
+        - dev
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                idIssuer:
+                  type: integer
+                idSubject:
+                  type: integer
+                keyHex:
+                  type: string
+                valueHex:
+                  type: string
+              example:
+                idIssuer: 0
+                idSubject: 1
+                keyHex: "0x98483c6eb40b6c31a448c22a66ded3b5e5e8d5119cac8327b655c8b5c4836489"
+                valueHex: "0x93285be41b243afa17cc06e34495c4ed06d3c96c68b07ceb2340baa71cb5c418"
+      responses:
+        '200':
+          content:
+            application/json:
+  /dev/ethreg/get-claim:
+    post:
+      summary: Get valueHex(256 bits) from claim smartcontract.
+      tags:
+        - dev
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                idIssuer:
+                  type: integer
+                idSubject:
+                  type: integer
+                keyHex:
+                  type: string
+              example:
+                idIssuer: 0
+                idSubject: 1
+                keyHex: "0x98483c6eb40b6c31a448c22a66ded3b5e5e8d5119cac8327b655c8b5c4836489"
+      responses:
+        '200':
+          content:
+            application/json:
+  /dev/ethreg/contract-deploy:
+    post:
+      summary: dev, EthereumClaimRegistry Deployment
+      tags:
+        - dev
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                idAccount: number
+              example:
+                idAccount: 0
+      responses:
+        '200':
+          content:
+            application/json:
+  /dev/bob/blockreq:
+    get:
+      summary: dev, blocking request 
+      tags:
+        - dev
+      parameters:
+        - in: query
+          name: seconds 
+          schema:
+            type: integer
+          examples:
+            seconds10:
+              value: 10
+      responses:
+        '200':
+          content:
+            application/json:
+  /dev/bob/address:
+    post:
+      summary: dev, bob's address
+      tags:
+        - dev
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type: string
+                id: number
+              example:
+                id: 1009
+                type: SYSTEM
+      responses:
+        '200':
+          content:
+            application/json:
+  /dev/did/mnemonic:
+    post:
+      summary: dev, did and mnemonic code
+      tags:
+        - dev
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                chinese: bool
+              example:
+                chinese: true
+      responses:
+        '200':
+          content:
+            application/json:
+  /auth/oid-tcsso-authurl:
+    post:
+      summary: 台中市教育局校園登入 OPENID authorization_endpoint
+      tags:
+        - authorization
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                response_type: string
+                azp: string
+                redirect_uri: string
+                scope: string
+                state: number
+              example:
+                response_type: code
+                scope: openid+email
+      responses:
+        '200':
+          content:
+            application/json:
+  /auth/jwt-token:
+    post:
+      summary: get jwt token
+      tags:
+        - authorization
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id: number
+                username: string
+                roles: array
+              example:
+                id: 1
+                username: bob
+                roles: ['USER']
+      responses:
+        '200':
+          content:
+            application/json:
+  /auth/jwt-authorized:
+    post:
+      summary: jwt token authorized
+      tags:
+        - authorization
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id: number
+              example:
+                id: 1
+      responses:
+        '200':
+          content:
+            application/json:
+  /auth/jwt-whoami:
+    get:
+      summary: whoami with jwt token
+      tags:
+        - authorization
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+  /auth/oid-callback:
+    post:
+      summary: 進行中 OpenID Connect 1.0 # 3.1.2 (http://openid.net/specs/openid-connect-core-1_0.html#AuthorizationEndpoint)
+      tags:
+        - authorization
+      parameters:
+      - name: code
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: state
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+  /datasrc/db/upload:
+    post:
+      summary: 開發中 upload file (1 MB)
+      tags:
+        - datasrc
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title: 
+                  type: string
+                uploadfile: 
+                  # default Content-Type for string/binary is `application/octet-stream`
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          content:
+            application/json:
+  /datasrc/eth:
+    get:
+      summary: 開發中
+      tags:
+        - datasrc
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+  /datasrc/swarm:
+    get:
+      summary: 開發中
+      tags:
+        - datasrc
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+  /datasrc/db:
+    get:
+      summary: 開發中
+      tags:
+        - datasrc
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+  /datasrc/ipfs:
+    get:
+      summary: 開發中
+      tags:
+        - datasrc
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+  /cert:
+    get:
+      summary: 開發中
+      tags:
+        - certificate
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+  /util:
+    get:
+      tags:
+        - util
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+  /util/version:
+    get:
+      tags:
+        - util
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    QueryDTO:
+      properties:
+        id:
+          type: integer
+        type:
+          type: string
+    Error:
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string

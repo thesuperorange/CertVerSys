@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>
+		Revocation test
+	</title>
+	<script language="JavaScript" type="text/javascript"
+        src="http://kjur.github.io/jsrsasign/jsrsasign-latest-all-min.js">
+	</script>
+	   <script type='text/javascript'>
+        function addFields(){
+            // Number of inputs to create
+            var number = document.getElementById("member").value;
+            // Container <div> where dynamic content will be placed
+            var container = document.getElementById("container");
+            // Clear previous contents of the container
+            while (container.hasChildNodes()) {
+                container.removeChild(container.lastChild);
+            }
+            for (i=0;i<number;i++){
+                // Append a node with a random text
+                container.appendChild(document.createTextNode("Member " + (i+1)));
+                // Create an <input> element, set its type and name attributes
+                var input = document.createElement("input");
+                input.type = "text";
+                input.name = "member" + i;
+                container.appendChild(input);
+                // Append a line break 
+                container.appendChild(document.createElement("br"));
+            }
+        }
+    </script>
+
+</head>
+<body>
+<h1>Revoke</h1>
+<div class="formContainer">
+	<form class="revokeadd" method="POST" action="http://localhost:3000/api/v1/datasrc/db/addRevokeList">
+		revoke hash : <input type="text" name="filehash" placeholder="hash value"> <br><br>
+		certificate Name ; <input type="text" name="CertName" placeholder="certificate name">	<br><br>
+		your address : <input type="text" name="ApplierAddr" placeholder="your address"> , 
+		your mnemonic : <input type="text" name="mnemonic" placeholder="mnemonic">
+		<br><br>
+		confirmation teacher : <input type="text" name="hash1" placeholder="hash value"> , 
+		 <br><br>
+		confirmation teacher 2 :<input type="text" name="hash2" placeholder="hash value"> ,
+		<br><br>
+		revoke reason : <textarea name="reason"></textarea> <br> <br>
+		<input type="submit" value="submit">
+	</form>
+</div>
+
+<h1>Teacher Signature</h1>
+<div class="formContainer">
+	<form class="revokecheck" method="POST" action="http://localhost:3000/api/v1/datasrc/db/TeacherSig">
+		file to sign : <input type="text" name="signfile" placeholder="file hash to sign">	<br><br>
+		teacher mnemonic : <input type="text" name="mnemonic" placeholder="hash value"> <br><br>
+		string to sign : <input type="text" name="SignString" placeholder = "sign string"> <br><br>
+		<input type="submit" value="submit">
+	</form>
+</div>
+
+<h1>DumpData</h1>
+<div class="formContainer">
+	<form class="checklist" method="POST" action="http://localhost:3000/api/v1/datasrc/db/DumpRevokeData">
+		revoke hash : <input type="text" name="revokehash">
+		<input type="submit" value="submit">
+	</form>
+</div>
+
+<h1>Dump ongoing revocation</h1>
+<div class="formContainer">
+	<form class="revokecheck" method="POST" action="http://localhost:3000/api/v1/datasrc/db/dumpRevokeList">
+		<input type="text" name="TeacherAddr" placeholder="Teacher Address">
+		<input type="submit" value="submit">
+	</form>
+</div>
+
+</body>
+</html>

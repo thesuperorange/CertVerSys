@@ -1,0 +1,23 @@
+{
+    "id": "http://example.tc.edu.tw/transcript/ID_TODO_中市光正畢字0265號",
+    "REF_Schema":"https://github.com/blockchain-certificates/cert-schema/blob/master/docs/schemas-2.md",
+    "type": ["EduTranscript"],
+    "name": "臺中市國民小學畢業證書",
+    "issuer": "臺中市霧峰區光正國民小學",
+    "issuerEn": "Kuang-Cheng Elementary School",
+    "url": "www.kces.tc.edu.tw",
+    "issuedOn": "2017-06-29T14:58:57.461422+00:00",
+    "claim": {
+      "id": "did:tcedu:nchc1qqxmkyf4zeujavd53adycve76tld7tus85jnhnw",
+      "name": "王小明",
+      "email": "xxxx@example.tc.edu.tw",
+      "pdf": "ZkxhQwAAACIQABAAAAUJABtAA+gA8AB+W8FZndQvQAyjv..."
+    },
+    "signature": {
+      "title": "校長?主任或教師證書簽發者?",
+      "type": "LinkedDataSignature2015",
+      "created": "2016-06-21T03:43:29Z",
+      "creator": "did:tcedu:nchc1校長?老師?xxxcreator#keys-1",
+      "signatureValue": "jz4bEW2FBMXTzhRnqTzJTnYSVo72PC92NA="
+    }
+  }

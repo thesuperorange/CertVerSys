@@ -1,0 +1,31 @@
+Applier address : 0xCc2E0914a108215a8941734460a01f6502f926Ed
+mnemonic : tell sibling misery still crew globe flip leopard mosquito silk west gesture
+
+Teacher mnemonic : happy lucky smile roselia hhw poppin party pastel pallete afterglow yeah bang
+address : 0xE2413070a20C6ea3Af566e34EcDfB515B56D2074
+
+Teacher2 mnemonic : imas ll misery still crew globe flip leopard mosquito silk west gesture
+address : 0x50eCc8613da9DF471beB7F5DbF65456BbA2c6533
+
+
+OpenID:
+student
+64720
+霧峰區光正國小
+帳號： 60101
+密碼： 23398687
+
+teacher
+帳號：jangann2000
+密碼：A223990386
+
+teacer2:
+帳號：tctest
+密碼：tc0987651
+
+
+tc tmp
+http://localhost:8080/#/oid/test/callback?code=3p6qITmacgthlfuL4pMgPLmWjXv8xzZm5YBUNOgC5Zs&state=8304072
+
+st tmp
+http://localhost:8080/#/oid/test/callback?code=kwfHYL5L7GKmYotGQcWGEZH6FuQEoWDk-siVzkKpCX8&state=4810107

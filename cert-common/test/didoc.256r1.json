@@ -1,0 +1,31 @@
+{
+    "context":"https://w3id.org/did/v1",
+    "id":"did:tcedu:nchc01lnjcy4spl58e8ujqulqj5ze4aw84xm2lrwv4d2",
+    "publicKey":[
+        {
+            "id":"did:tcedu:nchc01lnjcy4spl58e8ujqulqj5ze4aw84xm2lrwv4d2#keys-1",
+            "type":"Secp256r1VerificationKey2018",
+            "owner":"did:tcedu:nchc01lnjcy4spl58e8ujqulqj5ze4aw84xm2lrwv4d2",
+            "publicKeyHex":"027d11913d9fac2c66518e03aa86c1c110980895ac879657c0b5de925c988a2423"
+        },
+        {
+            "id":"did:tcedu:nchc01lnjcy4spl58e8ujqulqj5ze4aw84xm2lrwv4d2#keys-2",
+            "type":"Secp256r1VerificationKey2018",
+            "owner":"did:tcedu:nchc01lnjcy4spl58e8ujqulqj5ze4aw84xm2lrwv4d2",
+            "publicKeyHex":"029c13bb4935e1e10e1b967ecbadf1cb820ed0dc5280242f47c77af5e4ef85ebc2"
+        },
+        {
+            "id":"did:tcedu:nchc01lnjcy4spl58e8ujqulqj5ze4aw84xm2lrwv4d2#keys-3",
+            "type":"Secp256k1VerificationKey2018",
+            "owner":"did:tcedu:nchc01lnjcy4spl58e8ujqulqj5ze4aw84xm2lrwv4d2",
+            "publicKeyHex":"02190244c544c5532598d36deb800cfa74429b3a3203e24de51c73971c1cb7f47c"
+        }],
+    "authentication":[],
+    "service":[],
+    "proof":{
+        "type":"LinkedDataSignature2015",
+        "created":"2016-02-08T16:02:20Z",
+        "creator":"did:example:8uQhQMGzWxR8vw5P3UWH1ja#keys-1",
+        "signatureValue":"QNB13Y7Q9...1tzjn4w=="
+    }
+} 

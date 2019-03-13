@@ -1,0 +1,32 @@
+{
+    "@context": "https://w3id.org/did/v1",
+    "id": "did:tcedu:nchc1qqxmkyf4zeujavd53adycve76tld7tus85jnhnw",
+    "publicKey": [
+        {
+            "id": "did:tcedu:nchc1qqxmkyf4zeujavd53adycve76tld7tus85jnhnw#keys-1",
+            "type": "Secp256k1VerificationKey2018",
+            "owner": "did:tcedu:nchc1qqxmkyf4zeujavd53adycve76tld7tus85jnhnw",
+            "publicKeyHex": "03ce0b6d90dd2c502a0bb1667fdcc59341e911e6e6a36b18bd0ed735dec8a7c657"
+        },
+        {
+            "id": "did:tcedu:nchc1qqxmkyf4zeujavd53adycve76tld7tus85jnhnw#keys-2",
+            "type": "Secp256k1VerificationKey2018",
+            "owner": "did:tcedu:nchc1qqxmkyf4zeujavd53adycve76tld7tus85jnhnw",
+            "publicKeyHex": "03fa20272281bc0724c11c1ba21cebaac040864decd31e778d712d92f847ee4be1"
+        },
+        {
+            "id": "did:tcedu:nchc1qqxmkyf4zeujavd53adycve76tld7tus85jnhnw#keys-3",
+            "type": "Secp256k1VerificationKey2018",
+            "owner": "did:tcedu:nchc1qqxmkyf4zeujavd53adycve76tld7tus85jnhnw",
+            "publicKeyHex": "039248c9fa5aeeeba499eecc6f58386fbaa5ec9aa46d82b684f6619b4cff3ddf81"
+        }
+    ],
+    "authentication": [],
+    "service": [],
+    "proof": {
+        "type": "LinkedDataSignature2015",
+        "created": "2016-02-08T16:02:20Z",
+        "creator": "did:example:8uQhQMGzWxR8vw5P3UWH1ja#keys-1",
+        "signatureValue": "QNB13Y7Q9...1tzjn4w=="
+    }
+}
