@@ -29,7 +29,7 @@
     "jsonld": "^1.0.1",
     "jsonld-signatures": "^2.3.0",
     "jsrsasign": "^8.0.12",
-    "lodash": "^4.17.5",
+    "lodash": "^4.17.19",
     "njwt": "^0.4.0",
     "scrypt": "^6.0.3",
     "uuid": "^3.2.1",
