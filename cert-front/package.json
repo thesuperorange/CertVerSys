@@ -30,7 +30,7 @@
     "jwt-decode": "^2.2.0",
     "moment": "^2.22.1",
     "qr-image": "^3.2.0",
-    "qs": "^6.5.1",
+    "qs": "^6.5.3",
     "simple-uploader.js": "^0.2.2",
     "vee-validate": "^2.0.9",
     "vue": "^2.4.2",
