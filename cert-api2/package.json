@@ -43,7 +43,7 @@
     "bip39": "^2.5.0",
     "bitcoinjs-lib": "^3.3.2",
     "bstring": "0.0.2",
-    "class-validator": "^0.8.5",
+    "class-validator": "^0.14.0",
     "crypto": "^1.0.1",
     "dotenv": "^5.0.1",
     "ecurve": "^1.0.6",
